@@ -1,0 +1,24 @@
+{
+  "name": "VOGUE AR — AR Try-On Marketplace",
+  "short_name": "VOGUE AR",
+  "description": "Discover nearby fashion shops and try clothes virtually with AR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#131315",
+  "theme_color": "#131315",
+  "orientation": "portrait",
+  "categories": ["shopping", "fashion", "lifestyle"],
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "screenshots": [
+    { "src": "/screenshot-1.png", "sizes": "390x844", "type": "image/png", "form_factor": "narrow", "label": "Home — Discover nearby shops" },
+    { "src": "/screenshot-2.png", "sizes": "390x844", "type": "image/png", "form_factor": "narrow", "label": "AR Try-On — Camera overlay" }
+  ],
+  "shortcuts": [
+    { "name": "Nearby Shops", "short_name": "Explore", "url": "/#/", "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }] },
+    { "name": "AR Try-On", "short_name": "AR", "url": "/#/ar-home", "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }] }
+  ]
+}

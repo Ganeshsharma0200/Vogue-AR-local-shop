@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AR Try-On Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#62fae3",
+                      "primary": "#ddb7ff",
+                      "background": "#131315",
+                      "surface-variant": "#353437",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-bright": "#39393b",
+                      "on-secondary-fixed-variant": "#85145a",
+                      "primary-fixed-dim": "#ddb7ff",
+                      "on-tertiary-fixed-variant": "#005047",
+                      "on-secondary-container": "#ff93c8",
+                      "surface-container": "#201f22",
+                      "secondary": "#ffafd3",
+                      "secondary-fixed-dim": "#ffafd3",
+                      "on-primary-container": "#400071",
+                      "surface-container-low": "#1c1b1d",
+                      "on-error": "#690005",
+                      "surface-dim": "#131315",
+                      "on-primary-fixed": "#2c0051",
+                      "error-container": "#93000a",
+                      "secondary-container": "#85145a",
+                      "on-background": "#e5e1e4",
+                      "secondary-fixed": "#ffd8e7",
+                      "on-secondary": "#620040",
+                      "on-secondary-fixed": "#3d0026",
+                      "on-primary": "#490080",
+                      "tertiary-container": "#00a392",
+                      "on-tertiary-container": "#00302a",
+                      "tertiary-fixed-dim": "#3cddc7",
+                      "surface-tint": "#ddb7ff",
+                      "inverse-primary": "#842bd2",
+                      "on-primary-fixed-variant": "#6900b3",
+                      "surface-container-highest": "#353437",
+                      "on-surface": "#e5e1e4",
+                      "inverse-surface": "#e5e1e4",
+                      "on-surface-variant": "#cfc2d6",
+                      "outline-variant": "#4d4354",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary": "#003731",
+                      "outline": "#988d9f",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#f0dbff",
+                      "primary-container": "#b76dff",
+                      "inverse-on-surface": "#313032",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-container-lowest": "#0e0e10",
+                      "surface": "#131315",
+                      "tertiary": "#3cddc7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "lg": "32px",
+                      "sm": "16px",
+                      "md": "24px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "margin": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-bold": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0.1em", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(19, 19, 21, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-button {
+            background: linear-gradient(135deg, #b76dff, #842bd2);
+            box-shadow: 0 0 20px rgba(183, 109, 255, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen relative overflow-hidden">
+<!-- AR Camera View Background -->
+<div class="absolute inset-0 z-0">
+<img alt="AR Camera View" class="w-full h-full object-cover opacity-60" data-alt="A softly lit, minimalist room serving as an AR camera background. The scene is slightly blurred to simulate camera depth of field. A subtle, sleek modern silhouette of a mannequin stands in the center, acting as an alignment guide for augmented reality clothing. The overall aesthetic is high-end fashion, utilizing deep shadows and cool tones with hints of neon purple to match the digital couture theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCesLzgrgWvDIBCg1SrQOelfoizAsEnicQDnFwonzqBpNltO0PrI4n3V9-WvJpJ0IPXep_XifThl3xBjeYqnv5srx-KPEb-RRRvNcLSU09c1BSjVHFEygQlJuS7wcCTtY7XajJ2np4TR0VnLi1H2CQqQEQGnB_yj9rjwiYhApB8FxBg-vrItoRKeoI4ePB9_hFUucP-0NUsRUYabAvTdymiBb36Y1NPh7sXOnUaO3Zz59D2sNMIDhqg7K3r4TfWTTnzwqVE2Wda1CP8"/>
+<!-- Overlay for AR Kurti -->
+<div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+<img alt="AR Kurti Overlay" class="w-[80%] max-w-sm h-auto opacity-90 mix-blend-screen drop-shadow-2xl" data-alt="A digital, augmented reality overlay of a stylish, high-end Kurti. The garment appears to be floating in mid-air, mapped to an invisible human form. The fabric has a slight luminous quality, fitting the 'digital couture' theme. It features vibrant colors and intricate patterns that stand out against the darker, blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW8WWbveXclax87kGpr9l4QmXOSE2DBg_P9r8nsCr2nWixlcZOWQG5gYI-8jar_vnK4Sds-XO-XCJAlJIhTij8lfRWQQw7p-SbJ4_1y55uN_EAyPJ9vVlYqx2jk47I0hspOkGFvI_su7TS5HFi1GE4aaVlNzQOaQz7B85_wC1CEqFYiNIF-OUJTBy_YzsyQQb5Zu8IKWyOOVZwR74v-NvWIzNmijfWc5vh9BKTVHlQZyzWRqhkCknx5uvT2wn2kn7ABfa2U7SGGZAm" style="filter: drop-shadow(0 0 15px rgba(221,183,255,0.5));"/>
+</div>
+<!-- AR Framing Reticle -->
+<div class="absolute inset-x-margin top-[15%] bottom-[25%] border-2 border-dashed border-secondary/50 rounded-xl pointer-events-none flex items-center justify-center">
+<div class="w-16 h-16 border-t-2 border-l-2 border-secondary absolute top-0 left-0 -ml-[2px] -mt-[2px] rounded-tl-xl"></div>
+<div class="w-16 h-16 border-t-2 border-r-2 border-secondary absolute top-0 right-0 -mr-[2px] -mt-[2px] rounded-tr-xl"></div>
+<div class="w-16 h-16 border-b-2 border-l-2 border-secondary absolute bottom-0 left-0 -ml-[2px] -mb-[2px] rounded-bl-xl"></div>
+<div class="w-16 h-16 border-b-2 border-r-2 border-secondary absolute bottom-0 right-0 -mr-[2px] -mb-[2px] rounded-br-xl"></div>
+</div>
+</div>
+<!-- Top Navigation (Transactional, no bottom nav) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center h-16 px-5 glass-panel border-b border-white/10">
+<button class="text-primary p-2 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface">AR Preview</h1>
+<button class="text-primary p-2 hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Visual Feedback Text -->
+<div class="fixed top-24 left-1/2 -translate-x-1/2 z-40">
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="center_focus_weak">center_focus_weak</span>
+<span class="font-label-bold text-label-bold text-on-surface">Align your body to the frame</span>
+</div>
+</div>
+<!-- Side Controls (Adjust Fit) -->
+<div class="fixed right-margin top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4">
+<div class="glass-panel p-3 rounded-xl flex flex-col items-center gap-6 border-white/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant rotate-90 mb-4 tracking-widest uppercase">Scale</span>
+<div class="h-32 w-1 bg-surface-container-high rounded-full relative">
+<div class="absolute bottom-0 w-full bg-primary h-1/2 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_10px_rgba(221,183,255,0.8)] border-2 border-primary"></div>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="height">height</span>
+</div>
+</div>
+<!-- Bottom Controls Area -->
+<div class="fixed bottom-0 w-full z-40 pb-margin pt-8 px-margin bg-gradient-to-t from-background via-background/80 to-transparent">
+<!-- Size Switcher -->
+<div class="flex justify-center mb-6">
+<div class="glass-panel rounded-full flex p-1 border-white/20">
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors">S</button>
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold bg-primary-container/30 text-primary border border-primary/30 shadow-[inset_0_0_10px_rgba(183,109,255,0.2)]">M</button>
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors">L</button>
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold text-on-surface-variant hover:text-on-surface transition-colors">XL</button>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex justify-between items-center gap-4 max-w-md mx-auto">
+<!-- Take Photo -->
+<button class="w-14 h-14 rounded-full glass-panel flex items-center justify-center border-white/20 text-on-surface hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="photo_camera">photo_camera</span>
+</button>
+<!-- Reserve Now -->
+<button class="flex-1 neon-button text-white font-headline-md text-headline-md py-4 rounded-xl flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150">
+<span>Reserve Now</span>
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<!-- Details / More -->
+<button class="w-14 h-14 rounded-full glass-panel flex items-center justify-center border-white/20 text-on-surface hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+</body></html>

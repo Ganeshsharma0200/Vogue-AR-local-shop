@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-width=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nearby Shops Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#62fae3",
+                        "primary": "#ddb7ff",
+                        "background": "#131315",
+                        "surface-variant": "#353437",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-bright": "#39393b",
+                        "on-secondary-fixed-variant": "#85145a",
+                        "primary-fixed-dim": "#ddb7ff",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "on-secondary-container": "#ff93c8",
+                        "surface-container": "#201f22",
+                        "secondary": "#ffafd3",
+                        "secondary-fixed-dim": "#ffafd3",
+                        "on-primary-container": "#400071",
+                        "surface-container-low": "#1c1b1d",
+                        "on-error": "#690005",
+                        "surface-dim": "#131315",
+                        "on-primary-fixed": "#2c0051",
+                        "error-container": "#93000a",
+                        "secondary-container": "#85145a",
+                        "on-background": "#e5e1e4",
+                        "secondary-fixed": "#ffd8e7",
+                        "on-secondary": "#620040",
+                        "on-secondary-fixed": "#3d0026",
+                        "on-primary": "#490080",
+                        "tertiary-container": "#00a392",
+                        "on-tertiary-container": "#00302a",
+                        "tertiary-fixed-dim": "#3cddc7",
+                        "surface-tint": "#ddb7ff",
+                        "inverse-primary": "#842bd2",
+                        "on-primary-fixed-variant": "#6900b3",
+                        "surface-container-highest": "#353437",
+                        "on-surface": "#e5e1e4",
+                        "inverse-surface": "#e5e1e4",
+                        "on-surface-variant": "#cfc2d6",
+                        "outline-variant": "#4d4354",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#003731",
+                        "outline": "#988d9f",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#f0dbff",
+                        "primary-container": "#b76dff",
+                        "inverse-on-surface": "#313032",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface-container-lowest": "#0e0e10",
+                        "surface": "#131315",
+                        "tertiary": "#3cddc7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "48px",
+                        "lg": "32px",
+                        "sm": "16px",
+                        "md": "24px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "margin": "20px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0.1em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 shadow-none bg-zinc-950/80 backdrop-blur-xl">
+<div class="flex justify-between items-center h-16 px-5 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-400 hover:text-purple-400 transition-colors active:scale-95 duration-150 cursor-pointer" data-icon="menu">menu</span>
+<div class="flex flex-col">
+<h1 class="text-xl font-black italic tracking-tighter text-purple-500">VOGUE AR</h1>
+<div class="flex items-center gap-1 text-zinc-400 cursor-pointer hover:text-purple-400 transition-colors">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="text-[10px] font-medium font-inter uppercase tracking-widest">Current Location</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<img alt="User profile photo" class="w-8 h-8 rounded-full border border-white/20 object-cover cursor-pointer hover:border-purple-500 transition-colors active:scale-95 duration-150" data-alt="A striking portrait of a stylish user in a sleek, minimalist dark mode environment, illuminated by soft neon purple lighting. The user exudes confidence and high-fashion sensibility, serving as an avatar in a spatial computing ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAV07vMDYavYHUnztXX9lsbl2Z5xYBnphsgrsQfszynkEyxD9fwUfgtyGScrDUNUthSOo81Ug7K8KW88AKaE3vmMqRsRMYaQnJOk8IAyp2s4m91yS6VwoFW-IizWDaOy6-K-H4LeXXMm1wsQqknGk7EgwfFTXoQ3KC7c5JZl0409LhQVcrRA_BVw9cK7jBpUJjXtMHGRt59l6zF_AnUVuvzNwER9skyTXCddctN7KmMbmAdIl7q9KBOa97AiMKxooKK9-nve9_xRi6"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin max-w-7xl mx-auto space-y-lg">
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-container-high border border-white/10 rounded-xl text-on-surface placeholder-on-surface-variant focus:ring-secondary focus:border-secondary transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.4)]" placeholder="Search shops, brands, or 'silk dress'..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<button class="p-2 bg-surface-container rounded-lg border border-white/5 hover:border-purple-500/50 transition-colors">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="tune">tune</span>
+</button>
+</div>
+</div>
+<!-- Categories -->
+<section>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-2 pt-1 -mx-margin px-margin">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-primary-container/20 text-primary border border-primary/30 font-label-bold backdrop-blur-md shadow-[inset_0_0_10px_rgba(168,85,247,0.1)] transition-transform active:scale-95">All Styles</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container text-on-surface-variant border border-white/10 font-label-bold hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95">Men</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container text-on-surface-variant border border-white/10 font-label-bold hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95">Women</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container text-on-surface-variant border border-white/10 font-label-bold hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95">Ethnic</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-surface-container text-on-surface-variant border border-white/10 font-label-bold hover:bg-white/5 hover:text-on-surface transition-colors active:scale-95">Western</button>
+</div>
+</section>
+<!-- Shops Near You -->
+<section>
+<div class="flex justify-between items-end mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Shops Near You</h2>
+<button class="text-primary font-label-sm uppercase tracking-widest hover:text-primary-fixed transition-colors flex items-center gap-1">
+                    See Map <span class="material-symbols-outlined text-[14px]" data-icon="map">map</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Shop Card 1 -->
+<article class="bg-surface-container-low border border-white/10 rounded-xl overflow-hidden group hover:border-primary/50 transition-colors duration-300 relative">
+<!-- Glass AR Badge -->
+<div class="absolute top-4 left-4 z-10 bg-zinc-950/60 backdrop-blur-md border border-primary/30 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="view_in_ar">view_in_ar</span>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">AR Try-On</span>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-[22px] leading-tight text-on-surface mb-1">Vogue Ethnic</h3>
+<div class="flex items-center gap-3 text-on-surface-variant font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="directions_walk">directions_walk</span> 1.2 km</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-tertiary-fixed"><span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span> 4.8</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container border border-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Quick Browse Grid -->
+<div class="grid grid-cols-3 gap-2 h-32">
+<div class="col-span-2 rounded-lg overflow-hidden relative">
+<img alt="Featured product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stunning high-fashion display of an intricately embroidered ethnic silk dress inside a modern, dark-themed boutique. The lighting highlights the rich textures of the fabric against a minimalist black background, punctuated by subtle neon purple ambient lighting that suggests a cutting-edge augmented reality shopping experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQHk2O0PgKc5Nd4TXo5OrNlnPX2ZCLh2H7yWcLpkRC_iIQ9OFIhT50Xyk0abX4buDahUSPJ14NZtDkR1g-iF744qZe4Sn8zxR9esyOMW1l23zuHMhsgNEj1X1BUhTUxjarN8xShHJj70SZzpaKVNoGgHuxdFbzedQAq5cZoogtad1vxqFZMvaoEZLXBXeidWMVKaJlZ-JRaP27FYV339VwDfpucKUu9NKfMhhOU8jn7GL3szlvnkfs9aYOn-YCVU9WKlXpXJBqTzt8"/>
+</div>
+<div class="grid grid-rows-2 gap-2">
+<div class="rounded-lg overflow-hidden relative">
+<img alt="Product thumbnail" class="w-full h-full object-cover" data-alt="A close-up shot of luxurious ethnic fashion accessories displayed on a sleek, dark glass surface. The setting is a minimalist boutique environment illuminated by sharp, cool white spotlights and deep shadows, emphasizing the premium quality of the merchandise within a high-contrast digital couture aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJdem_iB4_W2j0y7rilzs-DCtH2Wml2byNhsbw_o032Syq9gg2bUkRYPpfz4bO_6jhXWnePkR9Md7Z8Gthkq0Rb5RR6jDWqSRtrPppTMRY75ZgleVklhVPI6zEpDh4aPIawoC3UGAoV9YaPoqBKN165KjVytuwS0EUIgTXYu00v2z--CyjaQDGwlZGFabTT7XHXrBPikLahmbSpeR7HHOYTdj22cjxY3ZnI6VJydEqGMxJr7KiFJdPQWAej1iwc8Vf5o8lImfenHr2"/>
+</div>
+<div class="rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-surface-container/80 backdrop-blur-sm z-10 flex items-center justify-center">
+<span class="font-label-bold text-on-surface">+12</span>
+</div>
+<img alt="Product thumbnail" class="w-full h-full object-cover" data-alt="Another angle of premium ethnic wear in a futuristic retail setting. The garment is subtly illuminated against a vast, dark backdrop, reinforcing a sophisticated, spatial computing-ready fashion catalogue presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZP5rc_3IcFncER-qbFhbuYqFj7HBHPdyvLnLelfhRclZ6cM5aZUbwhNwsACZnN-xj-BnZd-LG8phY5l0b9tjUCBRMA_BnDbV8_cjJqMiKVGyZ4rgtA_icsAJ9UWx51O4GxlvFLoER9wKLInhGOmWsFGPGSao0iL21JniDVLTDQzKz8RMxLbYB0GK245qNdopGSAmMi4AhtMqw_IyhCR-ig-6DJNrPw90vuS3MtIUWtlmtAQGY7iKbJQj92882PA4nX9yB64_ueeIf"/>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Shop Card 2 -->
+<article class="bg-surface-container-low border border-white/10 rounded-xl overflow-hidden group hover:border-primary/50 transition-colors duration-300 relative">
+<!-- Glass AR Badge -->
+<div class="absolute top-4 left-4 z-10 bg-zinc-950/60 backdrop-blur-md border border-primary/30 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-primary text-[14px]" data-icon="view_in_ar">view_in_ar</span>
+<span class="text-[10px] font-bold text-primary tracking-widest uppercase">AR Try-On</span>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-[22px] leading-tight text-on-surface mb-1">Classic Men's Wear</h3>
+<div class="flex items-center gap-3 text-on-surface-variant font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="directions_walk">directions_walk</span> 2.5 km</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-tertiary-fixed"><span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span> 4.5</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container border border-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Quick Browse Grid -->
+<div class="grid grid-cols-3 gap-2 h-32">
+<div class="col-span-2 rounded-lg overflow-hidden relative">
+<img alt="Featured product" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A meticulously tailored men's suit jacket presented on a minimalist mannequin in a dark, atmospheric fashion studio. The scene uses dramatic side-lighting to accentuate the sharp cut and premium fabric texture. A subtle neon purple accent light implies the integration of augmented reality try-on technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtKxh3pZi0I6KpuEXDR-5IltTppGP8xoCOjPQIFQG_C69SctR4PiVKfcOhyWYV6AyYTzcjb0mdYg9o9orjQgv8N3Gu4zneC4dv1TvwCXRadFgdXlXcX5CnEzikzcrlP-UrplqWF6Y017B2odkGP6rfyfZ-iF7E27OenSHt_C5a294QNvKEQJTLYnt_uUxSHNDGmDcW4me_gjEqByM5sPn9Yh3U2NjeYKfv3wJgP0NAPDCWbzQ-vmjrctXKco4VIxls-HIcm7DTTcFS"/>
+</div>
+<div class="grid grid-rows-2 gap-2">
+<div class="rounded-lg overflow-hidden relative">
+<img alt="Product thumbnail" class="w-full h-full object-cover" data-alt="A crisp, high-contrast detail shot of men's dress shirts neatly stacked. The environment is a sleek, black-toned retail space with cutting-edge minimalist shelving. The visual style is premium digital couture, focusing on deep blacks and pristine whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ0AKUnFMqPAfoCBWrpl1lYRjMM8ZwlFFFSlyOesciLp7NFPXTl2T8EIP4mvmhbRTpVMoS7BVEV1JtDjf35Od8GG5ywz-NeqaUQSum25umhIPtMayZ6p_GKm9ApdXSQguLqNfaKTPiiFm3fmsYCX2suqdT4-PnEH_Gfzk5U46bloe3_Eoi6984V_WjEcuDM8K52yBnz4zKUAdCNB32KrcL0E4QGFGGaWKBErXJusa50-muIjZ_Izh25o0xEEeJMN2LJeG09RfkhLiz"/>
+</div>
+<div class="rounded-lg overflow-hidden relative">
+<div class="absolute inset-0 bg-surface-container/80 backdrop-blur-sm z-10 flex items-center justify-center">
+<span class="font-label-bold text-on-surface">+8</span>
+</div>
+<img alt="Product thumbnail" class="w-full h-full object-cover" data-alt="A stylish arrangement of men's leather accessories on a dark glass table, embodying a high-end, technologically advanced lifestyle aesthetic typical of a modern AR shopping app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDysfE_Sys-VQBQVbxtUIK3NJPKlfhYM_gS3r5zmRugXgbVNg2eq28ZZkGZS4uuz4Zq-B7o6s2OPv6gf9b1QNhVU88DNsHo2h-LaugtX5gIWzyHc4XwOMCaeXaEBYvqmdjXs-8jFfH3gBWM0s_jJx4nZwLr3ExU5JX6fsl-vOAB7UUCgffFzDjB6X8whBlU9u9t0cM3LAAvbsF-6ev_StuZLsm1HrJFRC7vHUB1kKJ76yXgFONG8ueTRU2AFZsMU0Z1UALnP5GFViX7"/>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Shop Card 3 (No AR) -->
+<article class="bg-surface-container-low border border-white/10 rounded-xl overflow-hidden group hover:border-white/30 transition-colors duration-300 relative opacity-80">
+<div class="p-5">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-lg text-[22px] leading-tight text-on-surface mb-1">Urban Threads</h3>
+<div class="flex items-center gap-3 text-on-surface-variant font-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-icon="directions_walk">directions_walk</span> 3.1 km</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="flex items-center gap-1 text-tertiary-fixed"><span class="material-symbols-outlined text-[14px]" data-icon="star" data-weight="fill">star</span> 4.2</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container border border-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Quick Browse Grid -->
+<div class="grid grid-cols-3 gap-2 h-32">
+<div class="col-span-2 rounded-lg overflow-hidden relative bg-surface-container-high flex items-center justify-center">
+<img alt="Featured product" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A trendy, urban streetwear hoodie displayed against a raw concrete wall in a dimly lit, moody fashion environment. The lighting is sparse and cool-toned, creating a gritty yet premium minimalist dark mode vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbP164_15OFp2ogNQfd0Awq3Gb15KkKBAoWdAlATU-z__rJYl4xXpuowT6XJJK-VQrEOqH_XNOnzig6AI7Hl6XffHubZ-7IWcPahkZgmqPLXtRxLqD4Qf63M1M9yZqBB4rikL69QI3LP3L9Oh-utczluZL3WUex__zIQua2jdACUZllDJF4HwABMytisrKG18A7nmvktIbNX4HttFEdw8OikAsglSBJCOGNCnq1_BIqISZ_odkupFwCaQ7h6ib8Kib88WP1RLEVaa1"/>
+</div>
+<div class="grid grid-rows-2 gap-2">
+<div class="rounded-lg overflow-hidden relative bg-surface-container">
+<img alt="Product thumbnail" class="w-full h-full object-cover grayscale" data-alt="A minimalist display of casual sneakers on a stark black platform, utilizing high-contrast lighting to define the shapes and textures within a sophisticated dark interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRZayOkbbKJwhAw4PrRFe7YeCP2ZJ-TVdU6mFtZD4d8oFOx13JicOcNyM-Pck1UKj1GZehHxcjL_xOFfghemUiEsoNPGqPWgm10wpK1eted46q5_qJbbkkWJGi-MhVyT7aoWuRjE6M_J9cp1WuMTKChvd5w57uwZCpe2Qsw3cVdzETmteOdUdIn-pwV4fIlY9L-0rQsdWp1WdES6MyMaTZf5mAwsTgqtRpRiMS-lWyy671nhfoWAtcc082iXKQwks3GkVQ5zzO6MB4"/>
+</div>
+<div class="rounded-lg overflow-hidden relative bg-surface-container">
+<div class="absolute inset-0 bg-surface-container/80 backdrop-blur-sm z-10 flex items-center justify-center">
+<span class="font-label-bold text-on-surface">+24</span>
+</div>
+<img alt="Product thumbnail" class="w-full h-full object-cover grayscale" data-alt="A detail view of denim fabric textures in a moody, low-light retail setting, fitting perfectly into a dark-themed fashion application design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIAmAnZ-RfRt31EOoxxIzgY5Ljq0vbhEDiW1NeTr8OBRJcJZQu2QQ7T_gekOCOXfU2v5DMFEjfH3wggVZUYlOFbMmOTejhFkB-rTOemMhfdWbIWkbFA3DcSI_U7cX-eQ4I_uFjmnVppdVPm9vUDaNJbcYMUybSjAZ82DeBdv1ihXwt8MH4c_7LWYHItPhYA2QTS4CfZaCFTgy5_mzPH-AHnxU9fstROOxj_KDlPFYnvb7swR_ujmzMuxc3y4IFq_QV8HJiiUSORcHl"/>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-6 w-full z-50 flex justify-around items-center py-2 px-4 fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full border border-white/20 shadow-[0_0_20px_rgba(168,85,247,0.2)] bg-zinc-950/40 backdrop-blur-2xl">
+<a class="flex flex-col items-center bg-purple-600/20 text-purple-500 rounded-full p-3 shadow-[inset_0_0_10px_rgba(168,85,247,0.3)] hover:bg-white/5 transition-all active:scale-90 duration-200 cubic-bezier(0.34,1.56,0.64,1)" href="#">
+<span class="material-symbols-outlined" data-icon="explore" data-weight="fill">explore</span>
+<span class="hidden text-[10px] font-medium font-inter">Explore</span>
+</a>
+<a class="flex flex-col items-center text-zinc-400 p-3 hover:bg-white/5 transition-all active:scale-90 duration-200 cubic-bezier(0.34,1.56,0.64,1)" href="#">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+<span class="hidden text-[10px] font-medium font-inter">AR Home</span>
+</a>
+<a class="flex flex-col items-center text-zinc-400 p-3 hover:bg-white/5 transition-all active:scale-90 duration-200 cubic-bezier(0.34,1.56,0.64,1)" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="hidden text-[10px] font-medium font-inter">Favorites</span>
+</a>
+<a class="flex flex-col items-center text-zinc-400 p-3 hover:bg-white/5 transition-all active:scale-90 duration-200 cubic-bezier(0.34,1.56,0.64,1)" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="hidden text-[10px] font-medium font-inter">Profile</span>
+</a>
+</nav>
+</body></html>

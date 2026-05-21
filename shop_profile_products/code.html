@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vogue Ethnic - Shop Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#62fae3",
+                      "primary": "#ddb7ff",
+                      "background": "#131315",
+                      "surface-variant": "#353437",
+                      "surface-container-high": "#2a2a2c",
+                      "surface-bright": "#39393b",
+                      "on-secondary-fixed-variant": "#85145a",
+                      "primary-fixed-dim": "#ddb7ff",
+                      "on-tertiary-fixed-variant": "#005047",
+                      "on-secondary-container": "#ff93c8",
+                      "surface-container": "#201f22",
+                      "secondary": "#ffafd3",
+                      "secondary-fixed-dim": "#ffafd3",
+                      "on-primary-container": "#400071",
+                      "surface-container-low": "#1c1b1d",
+                      "on-error": "#690005",
+                      "surface-dim": "#131315",
+                      "on-primary-fixed": "#2c0051",
+                      "error-container": "#93000a",
+                      "secondary-container": "#85145a",
+                      "on-background": "#e5e1e4",
+                      "secondary-fixed": "#ffd8e7",
+                      "on-secondary": "#620040",
+                      "on-secondary-fixed": "#3d0026",
+                      "on-primary": "#490080",
+                      "tertiary-container": "#00a392",
+                      "on-tertiary-container": "#00302a",
+                      "tertiary-fixed-dim": "#3cddc7",
+                      "surface-tint": "#ddb7ff",
+                      "inverse-primary": "#842bd2",
+                      "on-primary-fixed-variant": "#6900b3",
+                      "surface-container-highest": "#353437",
+                      "on-surface": "#e5e1e4",
+                      "inverse-surface": "#e5e1e4",
+                      "on-surface-variant": "#cfc2d6",
+                      "outline-variant": "#4d4354",
+                      "on-error-container": "#ffdad6",
+                      "on-tertiary": "#003731",
+                      "outline": "#988d9f",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#f0dbff",
+                      "primary-container": "#b76dff",
+                      "inverse-on-surface": "#313032",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-container-lowest": "#0e0e10",
+                      "surface": "#131315",
+                      "tertiary": "#3cddc7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "lg": "32px",
+                      "sm": "16px",
+                      "md": "24px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "margin": "20px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-bold": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen font-body-md relative overflow-x-hidden pb-24">
+<!-- TopAppBar (Transactional - Hidden Nav Shell) -->
+<header class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center h-16 px-5 w-full shadow-none text-purple-500 font-inter tracking-tight font-bold text-lg">
+<button class="active:scale-95 duration-150 hover:text-purple-400 transition-colors flex items-center justify-center p-2 rounded-full">
+<span class="material-symbols-outlined text-zinc-400" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<span class="text-xl font-black italic tracking-tighter text-purple-500">Vogue Ethnic</span>
+<button class="active:scale-95 duration-150 hover:text-purple-400 transition-colors flex items-center justify-center p-2 rounded-full">
+<span class="material-symbols-outlined text-zinc-400" style="font-variation-settings: 'FILL' 0;">ios_share</span>
+</button>
+</header>
+<main class="pt-16 px-margin max-w-4xl mx-auto">
+<!-- Shop Header (Bento Style) -->
+<section class="mt-md mb-lg grid grid-cols-1 md:grid-cols-3 gap-xs">
+<div class="md:col-span-2 rounded-xl overflow-hidden relative h-64 border border-white/20">
+<img alt="Vogue Ethnic Storefront" class="w-full h-full object-cover" data-alt="A luxurious fashion boutique storefront bathed in dramatic, moody neon purple lighting. The interior displays high-end ethnic wear with glowing AR glass interfaces floating above the mannequins. The aesthetic is 'digital couture', blending high-street fashion with spatial computing precision in a high-contrast dark environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClCpYNabDamFmVt2fg70qfq_ay47jbsKLKLeikXQkfT_cdZNy0IeIB7hzvxZy5vy_nF9lB9wVVeoBmI6LytZfnHFA6uv8Q7HOLSpa4LTqNgRaMktjxbqmU5U1GiPwBHuDM7xgji2En-Cgj7FaQ5XgKCM9DUvAaj0siUltuJJ6LEmsIkVBCusTi1qWwd9nF-xiMXYkp8GJ13v0EjkH2A7Kvi3WvhJOzhLFYkLA6eCHOQ2Q35qpL55EUxA0JCAhCH0bHKsAgKmgzVNoE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/30 to-transparent"></div>
+<div class="absolute bottom-sm left-sm right-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-base tracking-tight">Vogue Ethnic</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">location_on</span>
+                        142 Fashion Avenue, Cyber City
+                    </p>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-sm border border-white/10 flex flex-col justify-center items-center gap-sm h-64 md:h-auto shadow-[inset_0_0_20px_rgba(168,85,247,0.05)] backdrop-blur-md">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mb-base border border-primary/30">
+<span class="material-symbols-outlined text-primary text-[32px]">directions</span>
+</div>
+<h3 class="font-label-bold text-label-bold text-on-surface text-center">Visit Shop</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center mb-md">Open until 9 PM</p>
+<button class="w-full py-3 px-6 rounded-full bg-gradient-to-r from-primary to-inverse-primary text-on-primary font-label-bold text-label-bold shadow-[0_0_15px_rgba(168,85,247,0.4)] active:scale-95 transition-transform flex items-center justify-center gap-2">
+                     Get Directions
+                 </button>
+</div>
+</section>
+<!-- Categories Tab -->
+<section class="mb-lg overflow-x-auto pb-2 scrollbar-hide">
+<div class="flex gap-sm min-w-max">
+<button class="px-6 py-2 rounded-full border border-primary text-primary bg-primary/10 font-label-bold text-label-bold backdrop-blur-md shadow-[inset_0_0_10px_rgba(168,85,247,0.2)]">Kurtis</button>
+<button class="px-6 py-2 rounded-full border border-white/10 text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-bold text-label-bold transition-colors backdrop-blur-md">Suits</button>
+<button class="px-6 py-2 rounded-full border border-white/10 text-on-surface-variant hover:text-on-surface hover:bg-white/5 font-label-bold text-label-bold transition-colors backdrop-blur-md">Sarees</button>
+</div>
+</section>
+<!-- Product Grid (Glassmorphism Cards) -->
+<section class="grid grid-cols-2 md:grid-cols-3 gap-sm mb-xl">
+<!-- Product 1 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-white/10 flex flex-col relative group">
+<div class="relative h-48 w-full">
+<img alt="Silk Blend Kurti" class="w-full h-full object-cover" data-alt="A high-fashion shot of a silk blend kurti dress, illuminated by soft, moody neon purple and deep black lighting. The fabric texture is sharp and premium, set against a minimalist dark background that feels like a high-end digital couture showcase." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFr6wgk4si02P3T9nzZ6csT2SWeIGOUPYIZ7kC10lpSPtvIAYiDYZrSuVgRLfAkUb7V6duHB_dWXXZ8mEXiwjhztPXJcCI84rW_Jaw6oKX0yHfGSUuxwmp4fFC8H4_XA-LS_zO5HRZ2Zub-OpO09usjqJkzq4I_J2M10VvZ1y_jWt-ZHcvqQCSp5Dk8Lr5uTwi9BbmcluOZZGGRyjSajOlmx5XGOT24XVxvhJazddXtyUjoi8L_LAfzP0sXa3AZ3frl7wo7Z3BjPUD"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-zinc-950/60 backdrop-blur-md flex items-center justify-center border border-white/20 text-on-surface hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<button class="flex items-center gap-1 bg-zinc-950/80 backdrop-blur-xl border border-primary/50 text-primary px-3 py-1.5 rounded-full font-label-sm text-label-sm shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span> Try Now
+                        </button>
+</div>
+</div>
+<div class="p-3 flex flex-col justify-between flex-grow bg-zinc-950/40 backdrop-blur-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface truncate">Midnight Silk Kurti</h3>
+<p class="font-body-md text-body-md text-primary mt-1 font-semibold">₹1,299</p>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-white/10 flex flex-col relative group">
+<div class="relative h-48 w-full">
+<img alt="Embroidered Cotton Kurti" class="w-full h-full object-cover" data-alt="An elegant embroidered cotton kurti displayed in a moody, dark setting with electric pink and neon purple ambient light. The intricate embroidery catches the subtle reflections, creating a premium 'digital couture' atmosphere suitable for an AR fashion app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT7v9LkqAY1gBuKE7uaKM5UQGe20MqFVgUKFjWT_tEv5-moOlahPjMwWd4FC1bHXGMAH7Ne-NCw33zi513dkqeW5k8uMgTAIQoS5ObAkhVoG1WQpmnOKQkyQdk0mHyXgZlzCe3CrA1td-vRwPjmpmpoGLzZywk7Y9uejNyjClt-5eebo7jmcunR4cLGJ2Z9BF0rL3af4wyPTDd9Ub3ufST3Jjrp6k1TrUPCC8hIr6LX5sg5m866HLkCOpdIM4gmjltNku6-ut-K-o5"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-zinc-950/60 backdrop-blur-md flex items-center justify-center border border-white/20 text-on-surface hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<button class="flex items-center gap-1 bg-zinc-950/80 backdrop-blur-xl border border-primary/50 text-primary px-3 py-1.5 rounded-full font-label-sm text-label-sm shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span> Try Now
+                        </button>
+</div>
+</div>
+<div class="p-3 flex flex-col justify-between flex-grow bg-zinc-950/40 backdrop-blur-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface truncate">Neon Threadwork Kurti</h3>
+<p class="font-body-md text-body-md text-primary mt-1 font-semibold">₹899</p>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-white/10 flex flex-col relative group">
+<div class="relative h-48 w-full">
+<img alt="Georgette Anarkali" class="w-full h-full object-cover" data-alt="A flowing Georgette Anarkali dress captured in a minimalist dark studio setting. Subtle neon purple edge lighting outlines the silhouette, emphasizing the luxurious drape of the fabric in a high-contrast, modern 'digital couture' style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3SDPPUPeDbkSPrTWD92RWG5wbRxxNU2K35DtdIfRWsrZX2cSvuxFT-Z_tgDMPI1nZXkDUiVV3JzdX9pVIwXAQs4NR-Nqw5iqzoPvRsjRudel6BqZZDJ5NOe7hN0tIGNcy-FQ6HFH9HqANQ8WVjEx-HD6O7_lQicRmAvvX6lMv4cx2ADqN1utQasrzK5dFOOjSAQZMfJQcr1N7f0Fk8V5hWVie3yCwMN3dEGrzZAKujtR227fk9RuElRQNp18l2fMVNaZdGLFALlfF"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-zinc-950/60 backdrop-blur-md flex items-center justify-center border border-white/20 text-on-surface hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<button class="flex items-center gap-1 bg-zinc-950/80 backdrop-blur-xl border border-primary/50 text-primary px-3 py-1.5 rounded-full font-label-sm text-label-sm shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span> Try Now
+                        </button>
+</div>
+</div>
+<div class="p-3 flex flex-col justify-between flex-grow bg-zinc-950/40 backdrop-blur-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface truncate">Cyber Flare Anarkali</h3>
+<p class="font-body-md text-body-md text-primary mt-1 font-semibold">₹2,499</p>
+</div>
+</div>
+<!-- Product 4 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden border border-white/10 flex flex-col relative group">
+<div class="relative h-48 w-full">
+<img alt="Printed Rayon Kurti" class="w-full h-full object-cover" data-alt="A printed rayon kurti featuring abstract geometric patterns, styled in a dark environment with striking tertiary cyan and neon purple lighting. The sleek, modern composition aligns with a spatial computing fashion platform's premium aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCef0rh4N32iVrDydHfdaa8JoUR-oqlQWP15rEH8_urfRBcd3TyDziITD9i-fVxf3qxZTHXrcK179eH6SzgbLW0W3xmPrzvNXXNu9kmjLTdk1WQGVXrpIwXT0bqZVSaF_xI6Q03XaPWj0PkQG7r1A3muLB56jGhJK_hyW_UbCx1wfH2SXsCK4Js5Guv7UPllngg7jYQa1UzGfrsstYnmPMBC4_fdjDSPcaP0Dy_TG8A38F7-IG3UU2mhSzL31tkXz8ahBsrcy-oVpth"/>
+<button class="absolute top-2 right-2 w-8 h-8 rounded-full bg-zinc-950/60 backdrop-blur-md flex items-center justify-center border border-white/20 text-on-surface hover:text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+<button class="flex items-center gap-1 bg-zinc-950/80 backdrop-blur-xl border border-primary/50 text-primary px-3 py-1.5 rounded-full font-label-sm text-label-sm shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span> Try Now
+                        </button>
+</div>
+</div>
+<div class="p-3 flex flex-col justify-between flex-grow bg-zinc-950/40 backdrop-blur-lg">
+<h3 class="font-label-bold text-label-bold text-on-surface truncate">Geo Print Rayon</h3>
+<p class="font-body-md text-body-md text-primary mt-1 font-semibold">₹749</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating 'Reserve' FAB (Contextual) -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="bg-gradient-to-r from-primary to-inverse-primary text-on-primary rounded-full px-6 py-4 flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.5)] active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-label-bold text-label-bold">Reserve (0)</span>
+</button>
+</div>
+</body></html>
